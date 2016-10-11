@@ -1,6 +1,3 @@
-array = [6, 4, 5, 2, 3, 1]
-
-
 def insertion_sort(a):
     for j in range(1, len(a)):
         key = a[j]
@@ -20,5 +17,6 @@ def bubble_sort(a):
     return a
 
 
+array = [6, 4, 5, 2, 3, 1]
 func = bubble_sort
 print('{func_name}: {arr}'.format(func_name=func.__name__, arr=func(array)))
