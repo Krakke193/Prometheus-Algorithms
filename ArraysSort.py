@@ -1,3 +1,6 @@
+import math
+
+
 def insertion_sort(a):
     for j in range(1, len(a)):
         key = a[j]
@@ -17,6 +20,36 @@ def bubble_sort(a):
     return a
 
 
-array = [6, 4, 5, 2, 3, 1]
-func = bubble_sort
-print('{func_name}: {arr}'.format(func_name=func.__name__, arr=func(array)))
+def merge_sort(a):
+    def perform(alist):
+        if len(alist) > 1:
+            mid = len(alist) // 2
+            left_arr = alist[:mid]
+            right_arr = alist[mid:]
+
+            merge_sort(left_arr)
+            merge_sort(right_arr)
+
+            left_arr.append(math.inf)
+            right_arr.append(math.inf)
+            i, j, k = 0, 0, 0
+
+            for k in range(0, len(alist)):
+                if left_arr[i] < right_arr[j]:
+                    alist[k] = left_arr[i]
+                    i += 1
+                else:
+                    alist[k] = right_arr[j]
+                    j += 1
+
+    perform(a)
+    return a
+
+
+array = [6, 4, 5, 9, 3, 1, -4, 2]
+func = merge_sort
+
+print()
+print('Unsorted array: {arr}'.format(arr=array))
+print('Method is: {name}'.format(name=func.__name__))
+print('Sorted array: {sorted_arr}'.format(sorted_arr=func(array)))
