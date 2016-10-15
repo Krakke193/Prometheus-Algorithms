@@ -27,9 +27,12 @@ def merge_sort(a):
             left_arr = alist[:mid]
             right_arr = alist[mid:]
 
+            # Recursive call onto the array, until we reach elemental nodes that contains only two numbers
             merge_sort(left_arr)
             merge_sort(right_arr)
 
+            # So when we reach this level (two numbers only) we begin to sort elemental nodes first
+            # and after that the complex nodes at the higher recursive level. Until we sort the whole array.
             left_arr.append(math.inf)
             right_arr.append(math.inf)
             i, j, k = 0, 0, 0
